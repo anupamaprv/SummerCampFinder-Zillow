@@ -90,7 +90,7 @@ function ProgramPage() {
             <section>
               <h2 className="mb-4 text-xl font-bold">Highlights</h2>
               <ul className="grid gap-2 sm:grid-cols-2">
-                {p.highlights.map((h) => (
+                {p.highlights.map((h: string) => (
                   <li key={h} className="flex items-start gap-2 rounded-xl bg-card border p-3">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                     <span className="text-sm font-medium">{h}</span>
@@ -113,7 +113,7 @@ function ProgramPage() {
             <section>
               <h2 className="mb-4 text-xl font-bold">Interests</h2>
               <div className="flex flex-wrap gap-2">
-                {p.interests.map((i) => (
+                {p.interests.map((i: string) => (
                   <span key={i} className="rounded-full bg-secondary px-3 py-1.5 text-sm font-semibold">{i}</span>
                 ))}
               </div>

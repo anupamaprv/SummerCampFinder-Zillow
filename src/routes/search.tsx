@@ -74,7 +74,7 @@ function SearchPage() {
   }, [search]);
 
   const setFilters = (next: FilterState) => {
-    navigate({ search: (prev) => ({ ...prev, ...next }) });
+    navigate({ search: (prev: Record<string, unknown>) => ({ ...prev, ...next }) });
   };
 
   const sortOptions: SortKey[] = search.age >= 13
@@ -117,7 +117,7 @@ function SearchPage() {
             </button>
             <select
               value={search.sort}
-              onChange={(e) => navigate({ search: (p) => ({ ...p, sort: e.target.value as SortKey }) })}
+              onChange={(e) => navigate({ search: (p: Record<string, unknown>) => ({ ...p, sort: e.target.value as SortKey }) })}
               className="rounded-full border bg-card px-4 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-ring"
             >
               {sortOptions.map((k) => <option key={k} value={k}>Sort: {SORT_LABELS[k]}</option>)}
