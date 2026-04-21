@@ -9,38 +9,82 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProgramProgramIdRouteImport } from './routes/program.$programId'
 
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProgramProgramIdRoute = ProgramProgramIdRouteImport.update({
+  id: '/program/$programId',
+  path: '/program/$programId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/search': typeof SearchRoute
+  '/program/$programId': typeof ProgramProgramIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/search': typeof SearchRoute
+  '/program/$programId': typeof ProgramProgramIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/search': typeof SearchRoute
+  '/program/$programId': typeof ProgramProgramIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/favorites' | '/search' | '/program/$programId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/favorites' | '/search' | '/program/$programId'
+  id: '__root__' | '/' | '/favorites' | '/search' | '/program/$programId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FavoritesRoute: typeof FavoritesRoute
+  SearchRoute: typeof SearchRoute
+  ProgramProgramIdRoute: typeof ProgramProgramIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +92,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/program/$programId': {
+      id: '/program/$programId'
+      path: '/program/$programId'
+      fullPath: '/program/$programId'
+      preLoaderRoute: typeof ProgramProgramIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FavoritesRoute: FavoritesRoute,
+  SearchRoute: SearchRoute,
+  ProgramProgramIdRoute: ProgramProgramIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
