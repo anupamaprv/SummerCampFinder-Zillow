@@ -52,7 +52,7 @@ export function SearchForm({ initial, variant = "hero" }: Props) {
               onChange={(e) => setZip(e.target.value.replace(/\D/g, "").slice(0, 5))}
               placeholder="11201"
               inputMode="numeric"
-              className="w-full bg-transparent text-base font-semibold outline-none placeholder:text-muted-foreground/60"
+              className="w-full bg-transparent text-base font-semibold text-black outline-none placeholder:text-muted-foreground/60"
             />
           </div>
         </label>
@@ -65,7 +65,7 @@ export function SearchForm({ initial, variant = "hero" }: Props) {
               type="number" min={4} max={18} required
               value={age}
               onChange={(e) => setAge(Number(e.target.value))}
-              className="w-full bg-transparent text-base font-semibold outline-none"
+              className="w-full bg-transparent text-base font-semibold text-black outline-none"
             />
           </div>
         </label>
