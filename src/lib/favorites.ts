@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 
-const KEY = "camphero:favorites";
+const KEY = "kodanz:favorites";
 
 function read(): string[] {
   if (typeof window === "undefined") return [];
@@ -13,7 +13,7 @@ function read(): string[] {
 
 function write(ids: string[]) {
   localStorage.setItem(KEY, JSON.stringify(ids));
-  window.dispatchEvent(new Event("camphero:fav"));
+  window.dispatchEvent(new Event("kodanz:fav"));
 }
 
 export function useFavorites() {
@@ -22,10 +22,10 @@ export function useFavorites() {
   useEffect(() => {
     setIds(read());
     const handler = () => setIds(read());
-    window.addEventListener("camphero:fav", handler);
+    window.addEventListener("kodanz:fav", handler);
     window.addEventListener("storage", handler);
     return () => {
-      window.removeEventListener("camphero:fav", handler);
+      window.removeEventListener("kodanz:fav", handler);
       window.removeEventListener("storage", handler);
     };
   }, []);

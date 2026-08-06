@@ -15,7 +15,7 @@ export function Header() {
             <Tent className="h-5 w-5" />
           </span>
           <span className="text-xl font-bold tracking-tight">
-            Camp<span className="text-accent">Hero</span>
+            Koda<span className="text-accent">nz</span>
           </span>
         </Link>
 
