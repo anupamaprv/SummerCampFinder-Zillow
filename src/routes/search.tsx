@@ -33,8 +33,8 @@ export const Route = createFileRoute("/search")({
   validateSearch: zodValidator(searchSchema),
   head: () => ({
     meta: [
-      { title: "Search Programs — Camp Hero" },
-      { name: "description", content: "Browse summer programs filtered by age, interests, cost, and distance." },
+      { title: "Search Programs — Kodanz" },
+      { name: "description", content: "Browse summer camps and year-round enrichment programs filtered by age, interests, cost, and distance." },
     ],
   }),
   component: SearchPage,

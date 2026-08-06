@@ -12,7 +12,7 @@ export const Route = createFileRoute("/program/$programId")({
   },
   head: ({ loaderData }) => ({
     meta: loaderData?.program ? [
-      { title: `${loaderData.program.name} — Camp Hero` },
+      { title: `${loaderData.program.name} — Kodanz` },
       { name: "description", content: loaderData.program.description },
       { property: "og:title", content: loaderData.program.name },
       { property: "og:description", content: loaderData.program.description },

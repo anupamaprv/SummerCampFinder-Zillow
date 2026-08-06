@@ -1,10 +1,10 @@
-# Camp Hero
+# Kodanz
 
-The Zillow for summer programs. Help parents discover the perfect summer camp or program for their kid in seconds.
+The Zillow for Summer camps and year-round enrichment programs. Help parents discover the perfect camp or program for their kid in seconds.
 
 ## What it does
 
-Search thousands of summer programs by ZIP code, child's age, and interests, then compare them across the dimensions parents actually care about.
+Search thousands of summer camps and year-round enrichment programs by ZIP code, child's age, and interests, then compare them across the dimensions parents actually care about.
 
 ## Core Features
 

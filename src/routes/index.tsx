@@ -10,10 +10,10 @@ import heroImg from "@/assets/hero.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Camp Hero — Find your kid's perfect summer program" },
-      { name: "description", content: "Search summer camps and programs by ZIP, age, and interests. Compare cost, distance, uniqueness, fun and college impact." },
-      { property: "og:title", content: "Camp Hero — Find your kid's perfect summer" },
-      { property: "og:description", content: "Zillow for summer programs. Discover camps your kid will love." },
+      { title: "Kodanz — Find camps and enrichment programs they'll love" },
+      { name: "description", content: "Search summer camps and year-round enrichment programs by ZIP, age, and interests. Compare coding, dance, entrepreneurship, sports, arts, and more." },
+      { property: "og:title", content: "Kodanz — Find camps and enrichment programs they'll love" },
+      { property: "og:description", content: "Zillow for Summer camps and year-round enrichment programs. Discover coding, dance, entrepreneurship, sports, arts, and more." },
     ],
   }),
   component: Index,
@@ -37,10 +37,10 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4 pt-16 pb-24 md:px-8 md:pt-24 md:pb-32 text-primary-foreground">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur">
-              <Award className="h-3.5 w-3.5" /> The Zillow for summer programs
+              <Award className="h-3.5 w-3.5" /> The Zillow for Summer camps and year-round enrichment programs
             </span>
             <h1 className="mt-5 text-5xl font-extrabold leading-[1.05] tracking-tight md:text-7xl">
-              Find a summer<br />
+              Find a camp or program<br />
               <span style={{
                 background: "linear-gradient(90deg, oklch(0.85 0.16 60), oklch(0.78 0.2 30))",
                 WebkitBackgroundClip: "text",
@@ -48,7 +48,7 @@ function Index() {
               }}>your kid will love.</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/85 md:text-xl">
-              Search thousands of camps and programs by ZIP, age and interests. Compare cost, fun factor, uniqueness and even college impact.
+              Search coding, dance, entrepreneurship, sports, arts, and more — from summer camps to year-round enrichment.
             </p>
           </div>
 
@@ -70,7 +70,7 @@ function Index() {
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-accent">Standouts</span>
             <h2 className="mt-1 text-3xl font-bold tracking-tight md:text-4xl">Truly unique programs</h2>
-            <p className="mt-2 text-muted-foreground">The summer experiences kids talk about for years.</p>
+            <p className="mt-2 text-muted-foreground">From code and dance to youth entrepreneur boot camps — and everything in between.</p>
           </div>
           <Link
             to="/search"
@@ -88,8 +88,8 @@ function Index() {
 
       <footer className="border-t bg-card">
         <div className="mx-auto max-w-7xl px-4 py-8 md:px-8 text-sm text-muted-foreground flex flex-col md:flex-row gap-2 justify-between">
-          <span>© {new Date().getFullYear()} Camp Hero</span>
-          <span>Made for parents who want the best summer.</span>
+          <span>© {new Date().getFullYear()} Kodanz</span>
+          <span>Made for parents who want the best for their kids.</span>
         </div>
       </footer>
     </div>
