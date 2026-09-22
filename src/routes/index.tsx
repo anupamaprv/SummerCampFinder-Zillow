@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const featured = scorePrograms(PROGRAMS, { zip: "11201", age: 12, interests: [] })
+  const featured = scorePrograms(PROGRAMS, { zip: "19702", age: 12, interests: [] })
     .sort((a, b) => b.uniqueness + b.fun - (a.uniqueness + a.fun))
     .slice(0, 6);
 
@@ -74,7 +74,7 @@ function Index() {
           </div>
           <Link
             to="/search"
-            search={{ zip: "11201", age: 12, interests: [], sort: "uniqueness", maxCost: 1000, maxDistance: 50, types: [], schedules: [] }}
+            search={{ zip: "19702", age: 12, interests: [], sort: "uniqueness", maxCost: 1000, maxDistance: 50, types: [], schedules: [] }}
             className="hidden md:inline-flex items-center gap-1 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-secondary"
           >
             View all →
