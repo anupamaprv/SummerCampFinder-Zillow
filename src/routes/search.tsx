@@ -12,8 +12,9 @@ import type { Interest, SortKey } from "@/lib/types";
 import { SlidersHorizontal, X } from "lucide-react";
 
 const interestEnum = z.enum([
-  "Coding","Robotics","Music","Theater","Art","Sports","Nature","Science",
-  "Writing","Leadership","Cooking","Languages","Math","Engineering","Filmmaking",
+  "Coding","Robotics","Music","Dance","Theater","Art","Sports","Martial Arts",
+  "Swimming","Nature","Science","Writing","Leadership","Cooking","Languages",
+  "Math","Chess","Engineering","Filmmaking",
 ]);
 
 const sortEnum = z.enum(["relevance","cost-asc","cost-desc","distance","uniqueness","fun","college"]);

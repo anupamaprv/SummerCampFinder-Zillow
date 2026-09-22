@@ -14,9 +14,12 @@ export type Interest =
   | "Coding"
   | "Robotics"
   | "Music"
+  | "Dance"
   | "Theater"
   | "Art"
   | "Sports"
+  | "Martial Arts"
+  | "Swimming"
   | "Nature"
   | "Science"
   | "Writing"
@@ -24,6 +27,7 @@ export type Interest =
   | "Cooking"
   | "Languages"
   | "Math"
+  | "Chess"
   | "Engineering"
   | "Filmmaking";
 
