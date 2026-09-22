@@ -50,7 +50,7 @@ export function SearchForm({ initial, variant = "hero" }: Props) {
             <input
               value={zip}
               onChange={(e) => setZip(e.target.value.replace(/\D/g, "").slice(0, 5))}
-              placeholder="11201"
+              placeholder="19702"
               inputMode="numeric"
               className="w-full bg-transparent text-base font-semibold text-black outline-none placeholder:text-muted-foreground/60"
             />
