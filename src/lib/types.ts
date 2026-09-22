@@ -6,7 +6,8 @@ export type ProgramType =
   | "Arts"
   | "STEM"
   | "Outdoor"
-  | "Specialty";
+  | "Specialty"
+  | "Childcare";
 
 export type Schedule = "Half Day" | "Full Day" | "Weekly" | "Multi-Week";
 
@@ -29,6 +30,7 @@ export type Interest =
   | "Math"
   | "Chess"
   | "Engineering"
+  | "Gymnastics"
   | "Filmmaking";
 
 export interface Program {
