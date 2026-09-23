@@ -17,7 +17,7 @@ export const Route = createFileRoute("/favorites")({
 });
 
 function FavoritesPage() {
-  const { ids } = useFavorites();
+  const { ids, isSignedIn } = useFavorites();
   const saved = scorePrograms(
     PROGRAMS.filter((p) => ids.includes(p.id)),
     { zip: "", age: 12, interests: [] },
