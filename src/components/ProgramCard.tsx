@@ -1,7 +1,8 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { Heart, MapPin, Calendar, DollarSign, Sparkles, Smile, GraduationCap } from "lucide-react";
 import type { ScoredProgram } from "@/lib/scoring";
 import { useFavorites } from "@/lib/favorites";
+import { toast } from "sonner";
 
 function ScorePill({ icon: Icon, label, value, color }: {
   icon: React.ElementType; label: string; value: number; color: string;
