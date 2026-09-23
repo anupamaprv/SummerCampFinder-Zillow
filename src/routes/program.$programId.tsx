@@ -151,7 +151,7 @@ function ProgramPage() {
               Request Info
             </button>
             <button
-              onClick={() => toggle(p.id)}
+              onClick={onSave}
               className={`w-full rounded-xl border py-3 text-sm font-bold inline-flex items-center justify-center gap-2 transition-colors ${
                 fav ? "border-accent bg-accent/10 text-accent" : "border-border bg-card hover:bg-secondary"
               }`}
