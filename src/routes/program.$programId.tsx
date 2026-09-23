@@ -157,7 +157,7 @@ function ProgramPage() {
               }`}
             >
               <Heart className={`h-4 w-4 ${fav ? "fill-accent" : ""}`} />
-              {fav ? "Saved" : "Save program"}
+              {fav ? "Saved" : isSignedIn ? "Save program" : "Sign in to save"}
             </button>
           </aside>
         </div>
