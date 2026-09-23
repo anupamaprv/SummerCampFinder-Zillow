@@ -82,7 +82,7 @@ export function ProgramCard({ p }: { p: ScoredProgram }) {
       </Link>
 
       <button
-        onClick={(e) => { e.preventDefault(); toggle(p.id); }}
+        onClick={onSave}
         className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/95 text-primary shadow-md transition-all hover:scale-110 active:scale-95"
         aria-label={fav ? "Remove from saved" : "Save program"}
       >
