@@ -59,9 +59,17 @@ function ScoreBar({ label, value, color, icon: Icon }: { label: string; value: n
 
 function ProgramPage() {
   const { program: p } = Route.useLoaderData();
-  const { has, toggle } = useFavorites();
+  const { has, toggle, isSignedIn } = useFavorites();
+  const navigate = useNavigate();
   const fav = has(p.id);
   const showCollege = p.ageMax >= 13;
+
+  function onSave() {
+    if (!toggle(p.id)) {
+      toast("Sign in to save camps", { description: "It's free and takes a few seconds." });
+      navigate({ to: "/auth" });
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background">
