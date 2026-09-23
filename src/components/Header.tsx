@@ -1,10 +1,20 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Heart, Tent } from "lucide-react";
+import { Heart, Tent, LogOut, User as UserIcon } from "lucide-react";
 import { useFavorites } from "@/lib/favorites";
+import { useAuth } from "@/lib/auth";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 export function Header() {
   const { ids } = useFavorites();
+  const { user, displayName } = useAuth();
   const navigate = useNavigate();
+
+  async function signOut() {
+    await supabase.auth.signOut();
+    toast.success("Signed out");
+    navigate({ to: "/", replace: true });
+  }
 
   return (
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
@@ -40,6 +50,31 @@ export function Header() {
               </span>
             )}
           </button>
+
+          {user ? (
+            <div className="flex items-center gap-1">
+              <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-2 text-sm font-semibold">
+                <UserIcon className="h-4 w-4 text-muted-foreground" />
+                <span className="max-w-[9rem] truncate">{displayName}</span>
+              </span>
+              <button
+                onClick={signOut}
+                aria-label="Sign out"
+                className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+              >
+                <LogOut className="h-4 w-4" />
+                <span className="hidden md:inline">Sign out</span>
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/auth"
+              className="ml-1 inline-flex items-center rounded-full px-4 py-2 text-sm font-bold text-accent-foreground"
+              style={{ background: "var(--gradient-coral)" }}
+            >
+              Sign in
+            </Link>
+          )}
         </nav>
       </div>
     </header>

@@ -1,7 +1,8 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { Heart, MapPin, Calendar, DollarSign, Sparkles, Smile, GraduationCap } from "lucide-react";
 import type { ScoredProgram } from "@/lib/scoring";
 import { useFavorites } from "@/lib/favorites";
+import { toast } from "sonner";
 
 function ScorePill({ icon: Icon, label, value, color }: {
   icon: React.ElementType; label: string; value: number; color: string;
@@ -17,7 +18,16 @@ function ScorePill({ icon: Icon, label, value, color }: {
 
 export function ProgramCard({ p }: { p: ScoredProgram }) {
   const { has, toggle } = useFavorites();
+  const navigate = useNavigate();
   const fav = has(p.id);
+
+  function onSave(e: React.MouseEvent) {
+    e.preventDefault();
+    if (!toggle(p.id)) {
+      toast("Sign in to save camps", { description: "It's free and takes a few seconds." });
+      navigate({ to: "/auth" });
+    }
+  }
 
   return (
     <article
@@ -72,7 +82,7 @@ export function ProgramCard({ p }: { p: ScoredProgram }) {
       </Link>
 
       <button
-        onClick={(e) => { e.preventDefault(); toggle(p.id); }}
+        onClick={onSave}
         className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/95 text-primary shadow-md transition-all hover:scale-110 active:scale-95"
         aria-label={fav ? "Remove from saved" : "Save program"}
       >

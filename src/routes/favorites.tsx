@@ -17,7 +17,7 @@ export const Route = createFileRoute("/favorites")({
 });
 
 function FavoritesPage() {
-  const { ids } = useFavorites();
+  const { ids, isSignedIn } = useFavorites();
   const saved = scorePrograms(
     PROGRAMS.filter((p) => ids.includes(p.id)),
     { zip: "", age: 12, interests: [] },
@@ -38,7 +38,22 @@ function FavoritesPage() {
           </div>
         </div>
 
-        {saved.length === 0 ? (
+        {!isSignedIn ? (
+          <div className="rounded-2xl border border-dashed bg-card p-16 text-center">
+            <Heart className="mx-auto h-10 w-10 text-muted-foreground/50" />
+            <h2 className="mt-4 text-xl font-bold">Sign in to see your saved camps</h2>
+            <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
+              Create a free account to keep your favorites on any device.
+            </p>
+            <Link
+              to="/auth"
+              className="mt-6 inline-flex items-center rounded-full px-6 py-3 text-sm font-bold text-accent-foreground"
+              style={{ background: "var(--gradient-coral)" }}
+            >
+              Sign in or create account
+            </Link>
+          </div>
+        ) : saved.length === 0 ? (
           <div className="rounded-2xl border border-dashed bg-card p-16 text-center">
             <Heart className="mx-auto h-10 w-10 text-muted-foreground/50" />
             <h2 className="mt-4 text-xl font-bold">No saved programs yet</h2>

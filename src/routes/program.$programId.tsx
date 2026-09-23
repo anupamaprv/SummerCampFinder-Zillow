@@ -1,7 +1,8 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { PROGRAMS } from "@/lib/programs";
 import { useFavorites } from "@/lib/favorites";
+import { toast } from "sonner";
 import { ArrowLeft, Calendar, MapPin, DollarSign, Heart, Sparkles, Smile, GraduationCap, Check } from "lucide-react";
 
 export const Route = createFileRoute("/program/$programId")({
@@ -58,9 +59,17 @@ function ScoreBar({ label, value, color, icon: Icon }: { label: string; value: n
 
 function ProgramPage() {
   const { program: p } = Route.useLoaderData();
-  const { has, toggle } = useFavorites();
+  const { has, toggle, isSignedIn } = useFavorites();
+  const navigate = useNavigate();
   const fav = has(p.id);
   const showCollege = p.ageMax >= 13;
+
+  function onSave() {
+    if (!toggle(p.id)) {
+      toast("Sign in to save camps", { description: "It's free and takes a few seconds." });
+      navigate({ to: "/auth" });
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -142,13 +151,13 @@ function ProgramPage() {
               Request Info
             </button>
             <button
-              onClick={() => toggle(p.id)}
+              onClick={onSave}
               className={`w-full rounded-xl border py-3 text-sm font-bold inline-flex items-center justify-center gap-2 transition-colors ${
                 fav ? "border-accent bg-accent/10 text-accent" : "border-border bg-card hover:bg-secondary"
               }`}
             >
               <Heart className={`h-4 w-4 ${fav ? "fill-accent" : ""}`} />
-              {fav ? "Saved" : "Save program"}
+              {fav ? "Saved" : isSignedIn ? "Save program" : "Sign in to save"}
             </button>
           </aside>
         </div>
