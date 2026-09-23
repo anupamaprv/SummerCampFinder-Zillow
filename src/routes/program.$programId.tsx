@@ -1,7 +1,8 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { PROGRAMS } from "@/lib/programs";
 import { useFavorites } from "@/lib/favorites";
+import { toast } from "sonner";
 import { ArrowLeft, Calendar, MapPin, DollarSign, Heart, Sparkles, Smile, GraduationCap, Check } from "lucide-react";
 
 export const Route = createFileRoute("/program/$programId")({
