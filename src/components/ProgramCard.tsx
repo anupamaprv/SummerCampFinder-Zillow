@@ -18,7 +18,16 @@ function ScorePill({ icon: Icon, label, value, color }: {
 
 export function ProgramCard({ p }: { p: ScoredProgram }) {
   const { has, toggle } = useFavorites();
+  const navigate = useNavigate();
   const fav = has(p.id);
+
+  function onSave(e: React.MouseEvent) {
+    e.preventDefault();
+    if (!toggle(p.id)) {
+      toast("Sign in to save camps", { description: "It's free and takes a few seconds." });
+      navigate({ to: "/auth" });
+    }
+  }
 
   return (
     <article
