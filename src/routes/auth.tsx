@@ -243,12 +243,12 @@ function AuthPage() {
 
 function Field({ label, action, children }: { label: string; action?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <label className="block">
-      <span className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-muted-foreground">
-        {label} {action}
-      </span>
+    <div className="block">
+      <div className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-muted-foreground">
+        <span>{label}</span> {action}
+      </div>
       {children}
-    </label>
+    </div>
   );
 }
 
